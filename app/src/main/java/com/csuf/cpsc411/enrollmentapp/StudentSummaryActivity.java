@@ -23,4 +23,10 @@ public class StudentSummaryActivity extends Activity {
         ad = new SummaryAdapter();
         mSummaryView.setAdapter(ad);
     }
+
+    @Override
+    protected void onStart() {
+        ad.notifyDataSetChanged();
+        super.onStart();
+    }
 }

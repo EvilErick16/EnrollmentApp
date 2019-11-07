@@ -29,9 +29,9 @@ public class StudentEnrollments {
         mStudents = new ArrayList<>();
 
         Student s1 = new Student("Erick", "Juarez", 890);
-        Student s2 = new Student("Jane", "Smith", 890);
-        Student s3 = new Student("John", "Cena", 890);
-        Student s4 = new Student("Randy", "Webb", 890);
+        Student s2 = new Student("Jane", "Smith", 891);
+        Student s3 = new Student("John", "Cena", 892);
+        Student s4 = new Student("Randy", "Webb", 893);
 
         mStudents.add(s1);
         mStudents.add(s2);

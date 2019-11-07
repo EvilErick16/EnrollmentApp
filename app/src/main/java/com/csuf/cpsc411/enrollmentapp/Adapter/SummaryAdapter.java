@@ -12,7 +12,6 @@ import com.csuf.cpsc411.enrollmentapp.R;
 
 public class SummaryAdapter extends BaseAdapter {
 
-    private int count = 0;
 
 
     @Override
@@ -34,7 +33,6 @@ public class SummaryAdapter extends BaseAdapter {
     public View getView(int i, View view, ViewGroup viewGroup) {
         View row_view;
         if (view == null) {
-            count++;
             LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
             row_view = inflater.inflate(R.layout.student_row, viewGroup, false);
         }
