@@ -1,5 +1,6 @@
 package com.csuf.cpsc411.enrollmentapp.Adapter;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 import com.csuf.cpsc411.enrollmentapp.Model.Student;
 import com.csuf.cpsc411.enrollmentapp.Model.StudentEnrollments;
 import com.csuf.cpsc411.enrollmentapp.R;
+import com.csuf.cpsc411.enrollmentapp.StudentDetailActivity;
 
 public class SummaryAdapter extends BaseAdapter {
 
@@ -45,6 +47,17 @@ public class SummaryAdapter extends BaseAdapter {
 
         fNameView.setText(s.getFirstName());
         lNameView.setText(s.getLastName());
+
+        row_view.setTag(Integer.valueOf(i));
+
+        row_view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), StudentDetailActivity.class);
+                intent.putExtra("studentIndex", ((Integer)view.getTag()).intValue());
+                view.getContext().startActivity(intent);
+            }
+        });
 
         return row_view;
     }

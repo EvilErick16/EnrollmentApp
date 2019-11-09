@@ -25,6 +25,14 @@ public class StudentEnrollments {
         this.mStudents = students;
     }
 
+    public void addStudent(Student student){
+        this.mStudents.add(student);
+    }
+
+    public int getLastIndex(){
+       return mStudents.size() - 1;
+    }
+
     private void createStudentObjects(){
         mStudents = new ArrayList<>();
 
