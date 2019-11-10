@@ -77,6 +77,11 @@ public class StudentDetailActivity extends AppCompatActivity {
                 }
                 else {
                     addVehicle.setText("Add Vehicle");
+                    int lastCar = StudentEnrollments.getInstance().getStudentCars(studentIndex).size() -1;
+                    StudentEnrollments.getInstance().getStudentCars(studentIndex).get(lastCar).setMake(makeView.getText().toString());
+                    v1.setMake(makeView.getText().toString());
+                    v1.setModel(modelView.getText().toString());
+                    v1.setYear(Integer.parseInt(yearView.getText().toString()));
                     StudentEnrollments.getInstance().getStudents().get(studentIndex).addVehicle(v1);
                     va.notifyDataSetChanged();
                 }
