@@ -14,9 +14,11 @@ import com.csuf.cpsc411.enrollmentapp.R;
 public class VehicleAdapter extends BaseAdapter {
 
     private int studentIndex;
+    private Boolean isEdit;
 
-    public VehicleAdapter(int index){
+    public VehicleAdapter(int index, Boolean isEdit){
         this.studentIndex = index;
+        this.isEdit = isEdit;
     }
 
 
@@ -37,6 +39,7 @@ public class VehicleAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
         View car_view;
         if (view == null) {
             LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
@@ -55,36 +58,19 @@ public class VehicleAdapter extends BaseAdapter {
         String year = Integer.toString(car.getYear());
         yearView.setText(year);
 
-        makeView.setEnabled(false);
-        modelView.setEnabled(false);
-        yearView.setEnabled(false);
+        if (car.getYear() == 0){
+            makeView.setEnabled(true);
+            modelView.setEnabled(true);
+            yearView.setEnabled(true);
+        }
+        else {
+            makeView.setEnabled(false);
+            modelView.setEnabled(false);
+            yearView.setEnabled(false);
+        }
 
         return car_view;
     }
 
-    public void makeEditable(int i, View view, ViewGroup viewGroup){
 
-        View car_view;
-        if (view == null) {
-            LayoutInflater inflater = LayoutInflater.from(viewGroup.getContext());
-            car_view = inflater.inflate(R.layout.vehicle_layout, viewGroup, false);
-        }
-        else car_view = view;
-
-        Vehicle car = StudentEnrollments.getInstance().getStudents().get(studentIndex).getVehicles().get(i);
-
-        TextView makeView = car_view.findViewById(R.id.make_id);
-        TextView modelView = car_view.findViewById(R.id.model_id);
-        TextView yearView = car_view.findViewById(R.id.year_id);
-
-        makeView.setText(car.getMake());
-        modelView.setText(car.getModel());
-        String year = Integer.toString(car.getYear());
-        yearView.setText(year);
-
-        makeView.setEnabled(false);
-        modelView.setEnabled(false);
-        yearView.setEnabled(false);
-
-    }
 }

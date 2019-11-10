@@ -47,46 +47,35 @@ public class StudentDetailActivity extends AppCompatActivity {
         lName.setEnabled(false);
         cwid.setEnabled(false);
 
-        if (StudentEnrollments.getInstance().getStudents().get(studentIndex).getVehicles() != null){
-            vehicleView = findViewById(R.id.vehicle_list_id);
-            va = new VehicleAdapter(studentIndex);
-            vehicleView.setAdapter(va);
-        }
+        createVehicleAdapter(false);
+
 
         final Button addVehicle = findViewById(R.id.add_vehicle_id);
         addVehicle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Vehicle v1 = new Vehicle("", "", 0);
-                TextView makeView = findViewById(R.id.make_id);
-                TextView modelView = findViewById(R.id.model_id);
-                TextView yearView = findViewById(R.id.year_id);
+                Vehicle v1 = new Vehicle(" ", " ", 0);
 
                 if (addVehicle.getText().toString().equals("Add Vehicle")){
                     addVehicle.setText("Done");
-
-                    makeView.setText(v1.getMake());
-                    modelView.setText(v1.getModel());
-                    String year = Integer.toString(v1.getYear());
-                    yearView.setText(year);
-
-                    makeView.setEnabled(true);
-                    modelView.setEnabled(true);
-                    yearView.setEnabled(true);
-
+                    StudentEnrollments.getInstance().getStudents().get(studentIndex).addVehicle(v1);
+                    createVehicleAdapter(true);
                 }
                 else {
                     addVehicle.setText("Add Vehicle");
-                    int lastCar = StudentEnrollments.getInstance().getStudentCars(studentIndex).size() -1;
-                    StudentEnrollments.getInstance().getStudentCars(studentIndex).get(lastCar).setMake(makeView.getText().toString());
-                    v1.setMake(makeView.getText().toString());
-                    v1.setModel(modelView.getText().toString());
-                    v1.setYear(Integer.parseInt(yearView.getText().toString()));
-                    StudentEnrollments.getInstance().getStudents().get(studentIndex).addVehicle(v1);
-                    va.notifyDataSetChanged();
+
+                    createVehicleAdapter(false);
                 }
             }
         });
+    }
+
+    public void createVehicleAdapter(Boolean isEdit){
+        if (StudentEnrollments.getInstance().getStudents().get(studentIndex).getVehicles() != null){
+            vehicleView = findViewById(R.id.vehicle_list_id);
+            va = new VehicleAdapter(studentIndex, isEdit);
+            vehicleView.setAdapter(va);
+        }
     }
 
     @Override
