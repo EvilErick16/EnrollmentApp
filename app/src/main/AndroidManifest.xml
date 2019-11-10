@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".StudentDetailActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"
             android:parentActivityName=".StudentSummaryActivity">
         </activity>
         <activity android:name=".StudentSummaryActivity">

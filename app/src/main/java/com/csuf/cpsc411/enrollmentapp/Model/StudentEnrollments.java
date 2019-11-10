@@ -33,8 +33,13 @@ public class StudentEnrollments {
        return mStudents.size() - 1;
     }
 
+    public ArrayList<Vehicle> getStudentCars(int index){
+        return mStudents.get(index).getVehicles();
+    }
+
     private void createStudentObjects(){
         mStudents = new ArrayList<>();
+        ArrayList<Vehicle> cars = new ArrayList<>();
 
         Student s1 = new Student("Erick", "Juarez", 890);
         Student s2 = new Student("Jane", "Smith", 891);
@@ -45,5 +50,16 @@ public class StudentEnrollments {
         mStudents.add(s2);
         mStudents.add(s3);
         mStudents.add(s4);
+
+        Vehicle v1 = new Vehicle("Toyota", "Corolla", 2004);
+        cars.add(v1);
+        s1.setVehicles(cars);
+
+        cars = new ArrayList<>();
+        Vehicle v2 = new Vehicle("BMW", "M2", 2017);
+        Vehicle v3 = new Vehicle("Lexus", "LFA", 2015);
+        cars.add(v2);
+        cars.add(v3);
+        s2.setVehicles(cars);
     }
 }

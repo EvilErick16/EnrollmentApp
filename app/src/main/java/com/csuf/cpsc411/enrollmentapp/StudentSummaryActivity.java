@@ -47,7 +47,7 @@ public class StudentSummaryActivity extends AppCompatActivity {
         StudentEnrollments.getInstance().addStudent(s);
 
         Intent intent = new Intent(this, StudentDetailActivity.class);
-        intent.putExtra("studentIndex", (S);
+        intent.putExtra("studentIndex", StudentEnrollments.getInstance().getLastIndex());
         startActivity(intent);
 
 

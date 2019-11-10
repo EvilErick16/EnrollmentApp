@@ -9,12 +9,14 @@ public class Student {
     private String mLastName;
     private int mCwid;
     private ArrayList<CourseEnrollment> mCourseEnrollments;
+    private ArrayList<Vehicle> mVehicles;
 
     // Constructor
     public Student(String FirstName, String LastName, int Cwid) {
         this.mFirstName = FirstName;
         this.mLastName = LastName;
         this.mCwid = Cwid;
+        this.mVehicles = new ArrayList<>();
     }
 
     // Set and Get functions
@@ -48,5 +50,17 @@ public class Student {
 
     public void setCourseEnrollments(ArrayList<CourseEnrollment> courseEnrollments){
         this.mCourseEnrollments = courseEnrollments;
+    }
+
+    public ArrayList<Vehicle> getVehicles() {
+        return mVehicles;
+    }
+
+    public void setVehicles(ArrayList<Vehicle> Vehicles) {
+        this.mVehicles = Vehicles;
+    }
+
+    public void addVehicle(Vehicle v) {
+        this.mVehicles.add(v);
     }
 }
